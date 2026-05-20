@@ -14,6 +14,12 @@
 - `docker-compose.yml` — adds `ariasql-visualization` container on port 8011; backend `depends_on` visualization with healthcheck; overrides `VISUALIZATION_SERVICE_URL` to `http://visualization:8011` for container networking
 - `start.sh` — updated to start the visualization service (port 8011) alongside the backend and frontend
 
+### Docs — Architecture diagram
+
+- `assets/architecture.png` — SQL Agent System Architecture diagram added to repo; shows full pipeline (UI → cache → complexity router → 4-layer schema retrieval → SQL generation → read-only execution → visualization + narration) and SQLAS evaluation framework panel
+- `README.md` — diagram embedded under Architecture section
+- `sqlas/README.md` — diagram embedded before Metrics Overview with caption explaining the SQLAS evaluation panel
+
 ### Docs — README split
 
 - `README.md` — rewritten as NexusSQL agent documentation: architecture, Docker quickstart, full API reference, config variables, project layout
