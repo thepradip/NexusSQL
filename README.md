@@ -13,7 +13,46 @@ Evaluate SQL agents across **50+ metrics** — correctness, quality, safety, age
 
 ---
 
-## Install
+## Running the Agent
+
+### Docker (recommended)
+
+```bash
+# 1. Fill in your credentials
+cp backend/.env.example backend/.env
+# edit backend/.env — set AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_API_KEY, AZURE_OPENAI_DEPLOYMENT_NAME
+
+# 2. Start everything
+docker compose up --build
+```
+
+Three containers start in order:
+
+| Container | Port | Role |
+|---|---|---|
+| `ariasql-visualization` | 8011 | Chart inference microservice |
+| `ariasql-backend` | 8000 | SQL AI agent API |
+| `ariasql-frontend` | 80 | React UI |
+
+Open `http://localhost` — the UI proxies API calls to the backend automatically.
+
+```bash
+docker compose down          # stop
+docker compose up            # restart (no rebuild)
+docker compose up --build    # rebuild after code changes
+```
+
+### Local (no Docker)
+
+```bash
+bash start.sh
+```
+
+Starts all three services in one command: visualization service (8011), backend (8000), and frontend dev server (5173).
+
+---
+
+## Install (SQLAS library)
 
 ```bash
 pip install sqlas                # core
@@ -24,32 +63,17 @@ pip install "sqlas[all]"         # everything
 
 ### Visualization Service
 
-New UI features run as separate FastAPI services. SQL chart inference is isolated from the main SQL agent backend:
+SQL chart inference runs as a separate FastAPI microservice, isolated from the main backend:
 
 ```text
 services/visualization_service/
-├── app.py                     FastAPI app
-│   ├── GET  /health
-│   ├── GET  /meta
-│   ├── POST /v1/visualizations/infer
-│   ├── POST /v1/visualizations/validate
-│   └── POST /v1/visualizations/render-spec
-├── inference.py               Deterministic chart selection
-├── validation.py              Renderability and data-alignment checks
-└── schemas.py                 Versioned Pydantic API contracts
+├── app.py          FastAPI app (GET /health, POST /v1/visualizations/infer, ...)
+├── inference.py    Deterministic chart type selection
+├── validation.py   Renderability and data-alignment checks
+└── schemas.py      Versioned Pydantic API contracts
 ```
 
-The main backend calls this service through `backend/visualization_client.py` with a short timeout. If the visualization service is unavailable, the SQL answer still returns successfully without a chart.
-
-**Run locally:**
-
-```bash
-# Start the visualization service (port 8011) before starting the backend
-python -m uvicorn services.visualization_service.app:app --host 127.0.0.1 --port 8011
-
-# Or use start.sh — it starts all three services automatically
-bash start.sh
-```
+The backend calls it through `backend/visualization_client.py` with a 2-second timeout. If the service is down, SQL answers still return — just without a chart.
 
 ---
 
