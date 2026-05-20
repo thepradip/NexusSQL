@@ -25,6 +25,8 @@ NexusSQL converts natural language questions into SQL, executes them against any
 
 ## Architecture
 
+![SQL Agent System Architecture](assets/architecture.png)
+
 ```
 ┌─────────────┐     /api/*      ┌──────────────────┐     SQL      ┌──────────┐
 │  React UI   │ ──────────────► │  FastAPI Backend  │ ──────────► │  Any DB  │

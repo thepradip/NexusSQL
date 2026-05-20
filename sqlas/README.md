@@ -245,6 +245,14 @@ log_all(results,
 
 ---
 
+## System Architecture
+
+![SQL Agent System Architecture](../assets/architecture.png)
+
+The right panel shows how SQLAS slots into a production SQL agent — evaluating execution accuracy, schema retrieval quality, safety, failure classification, and overall verdict across every query.
+
+---
+
 ## Metrics Overview
 
 | Dimension | Key Metrics |
