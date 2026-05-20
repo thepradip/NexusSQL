@@ -9,7 +9,8 @@ from typing import Any
 
 from .schemas import QueryResult, VisualizationSpec
 
-MAX_CHART_POINTS = 30
+MAX_BAR_POINTS  = 15  # bar/pie: labels overlap badly beyond this
+MAX_LINE_POINTS = 30  # line: many points still readable as a trend
 
 
 def infer_visualization(
@@ -113,20 +114,23 @@ def _build_chart_spec(
         chart_type = "bar"
         warnings.append("pie_chart_too_many_slices")
 
-    if len(series["records"]) > MAX_CHART_POINTS:
+    cap = MAX_LINE_POINTS if chart_type == "line" else MAX_BAR_POINTS
+    total = len(series["records"])
+    if total > cap:
         warnings.append("chart_points_limited")
 
     return VisualizationSpec(
         type=chart_type,
-        title=f"{_pretty_label(series['value_key'])} by {_pretty_label(label_key)}",
+        title=f"{_pretty_label(series['value_key'])} by {_pretty_label(label_key)}"
+              + (f" (top {cap} of {total})" if total > cap else ""),
         description=series["description"],
         label_key=label_key,
         value_key=series["value_key"],
         x_key=label_key,
         y_key=series["value_key"],
-        labels=series["labels"][:MAX_CHART_POINTS],
-        values=series["values"][:MAX_CHART_POINTS],
-        records=series["records"][:MAX_CHART_POINTS],
+        labels=series["labels"][:cap],
+        values=series["values"][:cap],
+        records=series["records"][:cap],
         confidence=0.86 if warnings else 0.92,
         warnings=warnings,
     )

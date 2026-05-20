@@ -64,11 +64,13 @@ function BarChartCard({ visualization }) {
   const values = visualization.values || [];
   const labels = visualization.labels || [];
   const bars = useMemo(() => buildBarSeries(labels, values), [labels, values]);
+  const showXLabels = bars.length <= 10;
+  const svgHeight = showXLabels ? 320 : 290;
 
   return (
     <div className="space-y-3">
-      <svg viewBox="0 0 640 320" className="w-full h-auto">
-        <rect x="0" y="0" width="640" height="320" rx="16" fill="#07111f" />
+      <svg viewBox={`0 0 640 ${svgHeight}`} className="w-full h-auto">
+        <rect x="0" y="0" width="640" height={svgHeight} rx="16" fill="#07111f" />
         {[0, 1, 2, 3].map((i) => (
           <line
             key={i}
@@ -94,9 +96,11 @@ function BarChartCard({ visualization }) {
               fill={PALETTE[index % PALETTE.length]}
               opacity="0.96"
             />
-            <text x={bar.centerX} y="300" textAnchor="middle" fontSize="11" fill="#6f849c">
-              {truncateLabel(bar.label, 12)}
-            </text>
+            {showXLabels && (
+              <text x={bar.centerX} y="300" textAnchor="middle" fontSize="11" fill="#6f849c">
+                {truncateLabel(bar.label, 12)}
+              </text>
+            )}
           </g>
         ))}
       </svg>
