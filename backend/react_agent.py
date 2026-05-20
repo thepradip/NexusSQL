@@ -30,7 +30,7 @@ from mlflow.entities import SpanType
 
 from llm_providers import LLMProvider
 from tools import TOOL_DEFINITIONS, execute_tool
-from visualization import build_visualization
+from visualization_client import infer_visualization
 
 MAX_STEPS = 10  # slightly higher because planning adds 1-2 steps
 
@@ -197,7 +197,7 @@ async def run_react_query(
                             "react.total_latency_ms": round(total_ms, 2),
                         })
 
-                        return _build_result(
+                        return await _build_result(
                             final_sql, final_answer_text, steps,
                             last_result_data, user_query, total_ms, success=True,
                         )
@@ -250,14 +250,14 @@ async def run_react_query(
             "Try asking a more focused question."
         )
 
-    return _build_result(
+    return await _build_result(
         final_sql, final_answer_text, steps,
         last_result_data, user_query, total_ms,
         success=bool(final_sql or final_answer_text),
     )
 
 
-def _build_result(
+async def _build_result(
     sql: str,
     response: str,
     steps: list[dict],
@@ -266,7 +266,7 @@ def _build_result(
     total_ms: float,
     success: bool,
 ) -> dict:
-    viz = build_visualization(user_query, result_data) if result_data else None
+    viz = await infer_visualization(user_query, result_data, response) if result_data else None
     return {
         "sql": sql,
         "data": result_data,

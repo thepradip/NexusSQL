@@ -31,11 +31,16 @@ python ingest.py 2>/dev/null && echo "  health.db ready." || echo "  health.db a
 echo "[3/4] Starting backend on http://localhost:8000 ..."
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload &
 BACKEND_PID=$!
+
+echo "[3b/4] Starting visualization service on http://localhost:8011 ..."
+cd ..
+python -m uvicorn services.visualization_service.app:app --host 127.0.0.1 --port 8011 &
+VIZ_PID=$!
 sleep 3
 
 # ── Frontend ──────────────────────────────────────────────────────────────────
 echo "[4/4] Starting frontend on http://localhost:5173 ..."
-cd ../frontend
+cd frontend
 npm install -q
 npm run dev &
 FRONTEND_PID=$!
@@ -45,11 +50,12 @@ echo "=============================="
 echo "  AriaSQL running!"
 echo "  UI  → http://localhost:5173"
 echo "  API → http://localhost:8000"
+echo "  Viz → http://localhost:8011"
 echo "  Docs→ http://localhost:8000/docs"
 echo "=============================="
 echo "  Press Ctrl+C to stop."
 echo ""
 
 # Wait and clean up on exit
-trap "kill $BACKEND_PID $FRONTEND_PID 2>/dev/null; echo 'Stopped.'" EXIT
+trap "kill $BACKEND_PID $VIZ_PID $FRONTEND_PID 2>/dev/null; echo 'Stopped.'" EXIT
 wait

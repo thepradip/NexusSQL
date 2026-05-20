@@ -262,7 +262,7 @@ function buildLinePoints(values) {
   const innerWidth = width - paddingX * 2;
   const innerHeight = height - paddingY * 2;
   const max = Math.max(...values, 1);
-  const min = Math.min(...values, 0);
+  const min = Math.min(...values);
   const range = max - min || 1;
 
   const nodes = values.map((value, index) => ({
