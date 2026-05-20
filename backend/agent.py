@@ -18,7 +18,7 @@ from schema_index import SchemaIndex
 from query_cache import QueryCache
 from llm_providers import LLMProvider, get_provider
 from tracing import traced_run_query
-from visualization import build_visualization
+from visualization_client import infer_visualization
 
 settings = get_settings()
 
@@ -439,7 +439,7 @@ async def run_query(
                 else:
                     response = await _narrate_result(user_query, cache_hit.sql, result)
 
-                viz = build_visualization(user_query, result)
+                viz = await infer_visualization(user_query, result, response)
                 return {
                     "sql": cache_hit.sql,
                     "data": result,
