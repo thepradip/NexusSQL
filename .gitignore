@@ -51,3 +51,4 @@ frontend/=3.1.0
 
 # Claude Code local settings (keep local only)
 .claude/
+CLAUDE.md
