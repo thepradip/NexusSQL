@@ -19,6 +19,13 @@ git -c user.name="thepradip" -c user.email="pradiptivhale@gmail.com" commit -m "
 
 Use `/gpush` to commit and push — it enforces this automatically.
 
+## Push rules (enforced by /gpush)
+
+1. **Credential scan first** — grep all changed files for API keys, passwords, tokens. Stop if found.
+2. **Tests must pass** — run `pytest` (backend) and health checks before committing. Fail = no push.
+3. **No `.env` files** — never stage `.env`, only `.env.example` is allowed in the repo.
+4. **Stage selectively** — never `git add .`; only add files relevant to the change.
+
 ## Project layout
 
 ```
