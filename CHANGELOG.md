@@ -1,5 +1,20 @@
 # Changelog
 
+## [Agent] - 2026-05-20
+
+### Fixed — Visualization pipeline after standalone service migration
+
+- **`backend/react_agent.py`** — replaced `from visualization import build_visualization` (broken after `visualization.py` was deleted in the standalone service PR) with `from visualization_client import infer_visualization`; made `_build_result` async so it can await the HTTP call. Agentic mode was crashing with `ImportError` on first use.
+- **`frontend/src/components/DataVisualization.jsx`** — removed forced zero baseline on line chart Y-axis (`Math.min(...values, 0)` → `Math.min(...values)`). High-value trend data (e.g. revenue in thousands) was rendering as a flat line.
+
+### Added — Docker support
+
+- `services/visualization_service/Dockerfile` — builds the chart inference microservice from the project root (required for package-relative imports)
+- `docker-compose.yml` — adds `ariasql-visualization` container on port 8011; backend `depends_on` visualization with healthcheck; overrides `VISUALIZATION_SERVICE_URL` to `http://visualization:8011` for container networking
+- `start.sh` — updated to start the visualization service (port 8011) alongside the backend and frontend
+
+---
+
 ## [2.4.0] - 2026-05-04
 
 ### Added — Prompt versioning, schema retrieval quality
