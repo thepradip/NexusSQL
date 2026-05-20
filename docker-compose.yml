@@ -2,15 +2,34 @@ version: "3.9"
 
 services:
 
+  visualization:
+    build:
+      context: .
+      dockerfile: services/visualization_service/Dockerfile
+    container_name: ariasql-visualization
+    ports:
+      - "8011:8011"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8011/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+
   backend:
     build: ./backend
     container_name: ariasql-backend
     env_file: ./backend/.env
+    environment:
+      - VISUALIZATION_SERVICE_URL=http://visualization:8011
     ports:
       - "8000:8000"
     volumes:
       - ./backend:/app          # hot-reload in dev (remove in prod)
       - db_data:/app/data       # persist SQLite + MLflow DB
+    depends_on:
+      visualization:
+        condition: service_healthy
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
