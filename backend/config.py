@@ -70,11 +70,16 @@ class Settings(BaseSettings):
     # 300 = 5 min (good for dashboards/reports). Set lower for real-time data.
     result_cache_ttl: int = 300
 
+    # ── Standalone visualization service ──────────────────────────────────────
+    visualization_service_enabled: bool = True
+    visualization_service_url: str = "http://127.0.0.1:8011"
+    visualization_service_timeout_seconds: float = 2.0
+
     # CORS
     frontend_url: str = "http://localhost:5173"
 
     class Config:
-        env_file = "../.env"
+        env_file = ("../.env", ".env")
         env_file_encoding = "utf-8"
         extra = "ignore"
 

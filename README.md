@@ -22,6 +22,25 @@ pip install "sqlas[ui]"          # + Streamlit UI
 pip install "sqlas[all]"         # everything
 ```
 
+### Visualization Service
+
+New UI features run as separate FastAPI services. SQL chart inference is isolated from the main SQL agent backend:
+
+```text
+services/visualization_service/
+├── app.py                     FastAPI app
+│   ├── GET  /health
+│   ├── GET  /meta
+│   ├── POST /v1/visualizations/infer
+│   ├── POST /v1/visualizations/validate
+│   └── POST /v1/visualizations/render-spec
+├── inference.py               Deterministic chart selection
+├── validation.py              Renderability and data-alignment checks
+└── schemas.py                 Versioned Pydantic API contracts
+```
+
+The main backend calls this service through `backend/visualization_client.py` with a short timeout. If the visualization service is unavailable, the SQL answer still returns successfully without a chart.
+
 ---
 
 ## What's New in v2.7.0
