@@ -41,6 +41,16 @@ services/visualization_service/
 
 The main backend calls this service through `backend/visualization_client.py` with a short timeout. If the visualization service is unavailable, the SQL answer still returns successfully without a chart.
 
+**Run locally:**
+
+```bash
+# Start the visualization service (port 8011) before starting the backend
+python -m uvicorn services.visualization_service.app:app --host 127.0.0.1 --port 8011
+
+# Or use start.sh — it starts all three services automatically
+bash start.sh
+```
+
 ---
 
 ## What's New in v2.7.0
