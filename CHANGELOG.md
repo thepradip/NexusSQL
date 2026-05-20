@@ -10,8 +10,19 @@
 ### Added — Docker support
 
 - `services/visualization_service/Dockerfile` — builds the chart inference microservice from the project root (required for package-relative imports)
+- `services/visualization_service/requirements.txt` — pinned deps (fastapi, uvicorn, pydantic); Dockerfile updated to use it for reproducible builds
 - `docker-compose.yml` — adds `ariasql-visualization` container on port 8011; backend `depends_on` visualization with healthcheck; overrides `VISUALIZATION_SERVICE_URL` to `http://visualization:8011` for container networking
 - `start.sh` — updated to start the visualization service (port 8011) alongside the backend and frontend
+
+### Docs — README split
+
+- `README.md` — rewritten as NexusSQL agent documentation: architecture, Docker quickstart, full API reference, config variables, project layout
+- `sqlas/README.md` — new file, SQLAS library documentation only: install, quick start, eval API, metrics table, weight profiles, benchmarks
+- `pyproject.toml` — `readme` updated to `sqlas/README.md` so PyPI shows the library README, not the agent one
+
+### Fixed — `backend/agent.py` UnboundLocalError
+
+- Added `global _query_cache` declaration in `run_query` — Python was treating the cache-disable assignment (`_query_cache = None`) as a local variable, causing `UnboundLocalError` on any read before the assignment was reached
 
 ---
 
