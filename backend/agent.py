@@ -400,6 +400,7 @@ async def run_query(
 
     Both paths return the same dict shape.
     """
+    global _query_cache  # assignment on cache-disable must write module-level var, not a local
     # ── Agentic (ReAct) path ──────────────────────────────────────────────────
     use_react = (
         (force_agentic or (settings.agentic_mode and _is_complex_query(user_query)))
