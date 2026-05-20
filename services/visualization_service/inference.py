@@ -74,20 +74,13 @@ def _build_number_spec(
             confidence=0.95,
         )
 
-    if len(numeric_columns) == 1:
+    if len(numeric_columns) == 1 and not categorical_columns:
         value_key = numeric_columns[0]
-        label_key = categorical_columns[0] if categorical_columns else value_key
-        context = ", ".join(
-            f"{_pretty_label(column)}: {record[column]}"
-            for column in categorical_columns[1:4]
-            if record.get(column) is not None
-        ) or None
         return VisualizationSpec(
             type="number",
             title="Key metric",
             number_value=_coerce_number_value(record.get(value_key)),
-            number_label=_pretty_label(label_key),
-            number_context=context,
+            number_label=_pretty_label(value_key),
             confidence=0.9,
         )
 
