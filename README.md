@@ -5,8 +5,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green)](https://fastapi.tiangolo.com/)
+[![Website](https://img.shields.io/badge/website-live-7c7bff)](https://thepradip.github.io/NexusSQL/)
 
-**Author:** [thepradip](https://github.com/thepradip)
+**🌐 Website:** [thepradip.github.io/NexusSQL](https://thepradip.github.io/NexusSQL/) · **Author:** [thepradip](https://github.com/thepradip)
 
 ---
 
