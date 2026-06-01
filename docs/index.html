@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NexusSQL — Natural Language to SQL, Reasoned & Scored</title>
-<meta name="description" content="NexusSQL converts natural language into SQL with multi-agent reasoning, schema-aware retrieval, charts, and production observability — plus SQLAS, a 50+ metric evaluation framework for Text-to-SQL agents." />
+<title>NexusSQL: Natural Language to SQL, Reasoned and Scored</title>
+<meta name="description" content="NexusSQL turns natural language into SQL using multi-agent reasoning, schema-aware retrieval, charts, and production observability. It ships with SQLAS, a 50+ metric evaluation framework for Text-to-SQL agents." />
 <meta name="author" content="thepradip" />
 
 <!-- Open Graph -->
-<meta property="og:title" content="NexusSQL — SQL AI Agent" />
+<meta property="og:title" content="NexusSQL: SQL AI Agent" />
 <meta property="og:description" content="Natural language to SQL with multi-agent reasoning, schema-aware retrieval, and production observability." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thepradip.github.io/NexusSQL/" />
@@ -282,9 +282,9 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
     <span class="badge"><span class="dot"></span> Multi-agent Text-to-SQL <span class="pill">v2.8</span></span>
     <h1 class="hero-title">From plain English<br><span class="grad">to business insights in seconds.</span></h1>
     <p class="hero-sub">
-      NexusSQL writes the SQL, runs it on any database, and narrates a <strong>charted answer in one API call</strong> —
-      while <strong>SQLAS</strong> scores every query across 50+ correctness, quality, and safety metrics.
-      So the insight is fast <strong>and</strong> trustworthy.
+      NexusSQL writes the SQL, runs it on any database, and gives you back a <strong>charted answer in a single API call</strong>.
+      SQLAS then scores every query across more than 50 correctness, quality, and safety metrics,
+      so you can see how far to trust each result.
     </p>
     <div class="hero-cta">
       <a href="#quickstart" class="btn btn-primary">Get started →</a>
@@ -300,10 +300,10 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
 
       <div class="term-panel active" data-termpanel="sqlas">
         <div class="terminal">
-          <div class="term-bar"><div class="dots"><i></i><i></i><i></i></div><span class="ttl">bash — install sqlas</span><button class="copy-btn">Copy</button></div>
+          <div class="term-bar"><div class="dots"><i></i><i></i><i></i></div><span class="ttl">bash: install sqlas</span><button class="copy-btn">Copy</button></div>
           <div class="term-body">
             <div class="ln"><span class="pr">$</span><span class="cmd">pip install sqlas</span></div>
-            <div class="ln out"><span class="ok">✓</span> installed sqlas — SQL Agent Scoring Framework</div>
+            <div class="ln out"><span class="ok">✓</span> installed sqlas (SQL Agent Scoring Framework)</div>
             <div class="ln"><span class="pr">$</span><span class="cmd">pip install "sqlas[mlflow]"   <span class="cmt"># + MLflow tracing</span></span></div>
             <div class="ln"><span class="pr">$</span><span class="cmd">pip install "sqlas[ui]"       <span class="cmt"># + Streamlit dashboard</span></span></div>
             <div class="ln"><span class="pr">$</span><span class="cmd">pip install "sqlas[all]"      <span class="cmt"># everything</span></span><span class="cursor"></span></div>
@@ -313,7 +313,7 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
 
       <div class="term-panel" data-termpanel="nexus">
         <div class="terminal">
-          <div class="term-bar"><div class="dots"><i></i><i></i><i></i></div><span class="ttl">bash — run NexusSQL</span><button class="copy-btn">Copy</button></div>
+          <div class="term-bar"><div class="dots"><i></i><i></i><i></i></div><span class="ttl">bash: run NexusSQL</span><button class="copy-btn">Copy</button></div>
           <div class="term-body">
             <div class="ln"><span class="pr">$</span><span class="cmd">git clone https://github.com/thepradip/NexusSQL.git</span></div>
             <div class="ln"><span class="pr">$</span><span class="cmd">cd NexusSQL</span></div>
@@ -340,13 +340,13 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
   <div class="wrap">
     <div class="center">
       <span class="eyebrow">Two halves of one system</span>
-      <h2 class="title">An agent that answers — and a framework that grades it</h2>
-      <p class="section-sub">NexusSQL ships the production agent and the evaluation harness together, so quality is measured, not assumed.</p>
+      <h2 class="title">An agent that answers, and a framework that grades it</h2>
+      <p class="section-sub">The agent and its evaluation tools live in the same repo, so you can check the quality of what it returns instead of guessing.</p>
     </div>
     <div class="split">
       <div class="product agent reveal">
         <h3><span class="tag">AGENT</span> NexusSQL</h3>
-        <p>The runtime: schema-aware NL→SQL generation, execution, narration, and charting with full observability.</p>
+        <p>The runtime. It handles schema-aware SQL generation, execution, narration, and charting, with tracing on every step.</p>
         <ul>
           <li>✦ <span>Pipeline &amp; agentic (ReAct) reasoning modes</span></li>
           <li>✦ <span>Schema-aware semantic retrieval for large databases</span></li>
@@ -357,10 +357,10 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
       </div>
       <div class="product sqlas reveal">
         <h3><span class="tag">EVAL</span> SQLAS</h3>
-        <p>The judge: a RAGAS-equivalent scoring library for Text-to-SQL and agentic SQL agents. <span class="mono">pip install sqlas</span></p>
+        <p>The scorer. A RAGAS-style library for grading Text-to-SQL and agentic SQL agents. Install it with <span class="mono">pip install sqlas</span>.</p>
         <ul>
           <li>✦ <span>50+ metrics across correctness, quality &amp; safety</span></li>
-          <li>✦ <span>Failure classification — know <em>why</em> a query failed</span></li>
+          <li>✦ <span>Failure classification, so you know <em>why</em> a query failed</span></li>
           <li>✦ <span>Three-dimension PASS/FAIL verdicts</span></li>
           <li>✦ <span>Spider / BIRD benchmark runners</span></li>
           <li>✦ <span>Guardrails, prompt versioning &amp; judge caching</span></li>
@@ -374,18 +374,18 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
 <section id="features">
   <div class="wrap">
     <span class="eyebrow">Features</span>
-    <h2 class="title">Everything a production SQL agent needs</h2>
-    <p class="section-sub">From a single question to a traced, cached, safety-checked, charted answer.</p>
+    <h2 class="title">Built for real production use</h2>
+    <p class="section-sub">Every question is answered, cached, traced, and safety-checked before the result comes back.</p>
     <div class="feat-grid">
-      <div class="card reveal"><div class="ico">🧠</div><h4>Multi-agent reasoning</h4><p>Fast single-pass pipeline, or a ReAct loop that plans, inspects the schema, executes, and self-corrects.</p></div>
-      <div class="card reveal"><div class="ico">🔎</div><h4>Schema-aware retrieval</h4><p>Databases above the table threshold switch to semantic retrieval so only relevant tables hit the prompt.</p></div>
-      <div class="card reveal"><div class="ico">📊</div><h4>Auto visualization</h4><p>An isolated microservice infers bar / line / pie / scatter / number charts — deterministically, off the hot path.</p></div>
-      <div class="card reveal"><div class="ico">🛡️</div><h4>Guardrails &amp; safety</h4><p>Read-only enforcement, SQL &amp; prompt injection detection, and PII access/leakage checks — zero LLM calls.</p></div>
-      <div class="card reveal"><div class="ico">⚡</div><h4>Production caching</h4><p>Semantic + exact NL→SQL cache and a result cache with TTL. Track hit rate and tokens saved live.</p></div>
-      <div class="card reveal"><div class="ico">📡</div><h4>MLflow observability</h4><p>Every query traced: latency, SQL complexity, cache metrics, and thumbs-up/down user feedback.</p></div>
-      <div class="card reveal"><div class="ico">🏢</div><h4>Multi-tenant</h4><p>Per-tenant table access control and row-level filters so each caller only sees their own slice of data.</p></div>
-      <div class="card reveal"><div class="ico">🌊</div><h4>Streaming</h4><p>SSE endpoint streams each stage — schema, SQL, execution, narration — to the UI in real time.</p></div>
-      <div class="card reveal"><div class="ico">🎯</div><h4>Drift monitoring</h4><p>Production drift status endpoint flags when answer quality or query patterns shift over time.</p></div>
+      <div class="card reveal"><div class="ico">🧠</div><h4>Multi-agent reasoning</h4><p>A fast single-pass pipeline, or a ReAct loop that plans, reads the schema, runs the query, and fixes its own mistakes.</p></div>
+      <div class="card reveal"><div class="ico">🔎</div><h4>Schema-aware retrieval</h4><p>When a database has a lot of tables, it switches to semantic retrieval so only the relevant ones go into the prompt.</p></div>
+      <div class="card reveal"><div class="ico">📊</div><h4>Auto visualization</h4><p>A separate microservice picks the chart type (bar, line, pie, scatter, or single number). It runs off the hot path, so it never slows an answer down.</p></div>
+      <div class="card reveal"><div class="ico">🛡️</div><h4>Guardrails &amp; safety</h4><p>Read-only enforcement, SQL and prompt injection detection, and PII access checks. None of it needs an LLM call.</p></div>
+      <div class="card reveal"><div class="ico">⚡</div><h4>Production caching</h4><p>A semantic and exact NL→SQL cache, plus a result cache with TTL. You can watch the hit rate and tokens saved as they happen.</p></div>
+      <div class="card reveal"><div class="ico">📡</div><h4>MLflow observability</h4><p>Every query is traced with latency, SQL complexity, cache metrics, and the thumbs-up or thumbs-down a user left.</p></div>
+      <div class="card reveal"><div class="ico">🏢</div><h4>Multi-tenant</h4><p>Per-tenant table access control and row-level filters, so each caller only sees their own data.</p></div>
+      <div class="card reveal"><div class="ico">🌊</div><h4>Streaming</h4><p>An SSE endpoint streams each stage (schema, SQL, execution, narration) to the UI as it happens.</p></div>
+      <div class="card reveal"><div class="ico">🎯</div><h4>Drift monitoring</h4><p>A drift status endpoint flags when answer quality or query patterns start to shift over time.</p></div>
     </div>
   </div>
 </section>
@@ -395,12 +395,12 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
   <div class="wrap">
     <span class="eyebrow">How it works</span>
     <h2 class="title">Two ways to reason</h2>
-    <p class="section-sub">Pick speed or depth per request — the agentic loop is one flag away.</p>
+    <p class="section-sub">Choose speed or depth per request. The agentic loop is one flag away.</p>
     <div class="modes">
       <div class="mode reveal">
         <span class="pip">Default</span>
         <h4>⚡ Pipeline mode</h4>
-        <p>A fast single pass for direct questions. Low latency, fully cached, ideal for dashboards and known query shapes.</p>
+        <p>A single fast pass for direct questions. Low latency and fully cached, which suits dashboards and queries you run often.</p>
         <div class="flow">
           <span class="step">Schema</span><span class="arr">→</span>
           <span class="step">SQL</span><span class="arr">→</span>
@@ -412,7 +412,7 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
       <div class="mode reveal">
         <span class="pip">force_agentic: true</span>
         <h4>🧠 Agentic (ReAct) mode</h4>
-        <p>Multi-step reasoning for ambiguous or complex analytics. The agent inspects tables and self-corrects before answering.</p>
+        <p>Multi-step reasoning for vaguer or more involved questions. The agent reads the tables and corrects itself before answering.</p>
         <div class="flow">
           <span class="step">Plan</span><span class="arr">→</span>
           <span class="step">Inspect schema</span><span class="arr">→</span>
@@ -457,7 +457,7 @@ cd NexusSQL
 
 # 2. Set credentials
 cp backend/.env.example backend/.env
-# edit backend/.env — AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_API_KEY, AZURE_OPENAI_DEPLOYMENT_NAME
+# edit backend/.env: AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_API_KEY, AZURE_OPENAI_DEPLOYMENT_NAME
 
 # 3. Start everything (viz → backend → frontend)
 docker compose up --build</code></pre>
@@ -530,7 +530,7 @@ cd frontend && npm run dev</code></pre>
 
     <div class="tab-panel" data-panel="agentic">
       <div class="code-block">
-        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span class="code-file">curl — ReAct loop</span><button class="copy-btn">Copy</button></div>
+        <div class="code-head"><div class="dots"><i></i><i></i><i></i></div><span class="code-file">curl: ReAct loop</span><button class="copy-btn">Copy</button></div>
 <pre><code class="language-bash">curl -X POST http://localhost:8000/query \
   -H "Content-Type: application/json" \
   -d '{
@@ -549,7 +549,7 @@ cd frontend && npm run dev</code></pre>
           <tbody>
             <tr><td class="mono-cell">GET</td><td>/health</td><td>Service health + table list</td></tr>
             <tr><td class="mono-cell">GET</td><td>/schema</td><td>Full database schema</td></tr>
-            <tr><td class="mono-cell">POST</td><td>/query/stream</td><td>SSE streaming — stages in real time</td></tr>
+            <tr><td class="mono-cell">POST</td><td>/query/stream</td><td>SSE streaming, stages in real time</td></tr>
             <tr><td class="mono-cell">POST</td><td>/feedback</td><td>Thumbs up/down on a trace</td></tr>
             <tr><td class="mono-cell">GET</td><td>/cache/stats</td><td>Cache hit rate, tokens saved</td></tr>
             <tr><td class="mono-cell">POST</td><td>/export/csv</td><td>Download results as CSV</td></tr>
@@ -565,9 +565,9 @@ cd frontend && npm run dev</code></pre>
 <!-- SQLAS -->
 <section id="sqlas">
   <div class="wrap">
-    <span class="eyebrow">SQLAS — the evaluation framework</span>
+    <span class="eyebrow">SQLAS, the evaluation framework</span>
     <h2 class="title">Score every query across 50+ metrics</h2>
-    <p class="section-sub">A RAGAS-equivalent library for Text-to-SQL and agentic agents — aligned with Spider, BIRD, RAGAS, and MLflow. <span class="mono" style="color:#8fe9f6">pip install sqlas</span></p>
+    <p class="section-sub">A RAGAS-style library for Text-to-SQL and agentic agents, aligned with Spider, BIRD, RAGAS, and MLflow. <span class="mono" style="color:#8fe9f6">pip install sqlas</span></p>
 
     <div class="tabs" id="sqlas-tabs">
       <button class="tab active" data-tab="eval">Evaluate</button>
@@ -616,7 +616,7 @@ print(q.score, q.verdict)   # 0.72  PASS   (threshold 0.6)
 print(s.score, s.verdict)   # 0.45  FAIL   (PII detected, threshold 0.9)
 
 # PASS only when ALL THREE dimensions clear their thresholds.
-# evaluate_safety() makes ZERO LLM calls — pure regex + sqlglot AST.</code></pre>
+# evaluate_safety() makes zero LLM calls: pure regex + sqlglot AST.</code></pre>
       </div>
     </div>
 
@@ -632,7 +632,7 @@ analysis = classify_failure(
 )
 
 print(analysis.primary)    # FailureCategory.LIMIT_TRUNCATION
-print(analysis.top_hint()) # "Remove LIMIT — question asks for full results, not top-N"</code></pre>
+print(analysis.top_hint()) # "Remove LIMIT, the question asks for full results, not top-N"</code></pre>
       </div>
       <div class="metric-grid">
         <div class="metric"><div class="chips">
@@ -684,7 +684,7 @@ print(generate_report(results, format="json"))       # → artifacts</code></pre
           <tr><td class="mono-cell">WEIGHTS</td><td>15</td><td>Standard NL→SQL pipeline</td></tr>
           <tr><td class="mono-cell">WEIGHTS_V2</td><td>20</td><td>+ RAGAS context quality</td></tr>
           <tr><td class="mono-cell">WEIGHTS_V3</td><td>30</td><td>+ Guardrails + visualization</td></tr>
-          <tr><td class="mono-cell">WEIGHTS_V4</td><td>28</td><td>+ Agentic quality — ReAct agents</td></tr>
+          <tr><td class="mono-cell">WEIGHTS_V4</td><td>28</td><td>+ Agentic quality (ReAct agents)</td></tr>
         </tbody>
       </table>
     </div>
@@ -695,7 +695,7 @@ print(generate_report(results, format="json"))       # → artifacts</code></pre
 <section style="padding-bottom:0">
   <div class="cta-band reveal">
     <h2>Ship a SQL agent you can trust.</h2>
-    <p>Run it, measure it, and prove it — all from one repo.</p>
+    <p>Everything you need to run it and check its quality is in one repo.</p>
     <div class="hero-cta">
       <a href="https://github.com/thepradip/NexusSQL" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub →</a>
       <a href="https://pypi.org/project/sqlas/" class="btn btn-ghost" target="_blank" rel="noopener">pip install sqlas</a>
