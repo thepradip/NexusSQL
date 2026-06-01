@@ -282,9 +282,9 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
     <span class="badge"><span class="dot"></span> Multi-agent Text-to-SQL <span class="pill">v2.8</span></span>
     <h1 class="hero-title">From plain English<br><span class="grad">to business insights in seconds.</span></h1>
     <p class="hero-sub">
-      NexusSQL writes the SQL, runs it on any database, and gives you back a <strong>charted answer in a single API call</strong>.
-      SQLAS then scores every query across more than 50 correctness, quality, and safety metrics,
-      so you can see how far to trust each result.
+      Ask a question in plain language. NexusSQL writes the SQL, runs it, and hands back
+      <strong>the answer with a chart</strong>. Every query also gets a score from <strong>SQLAS</strong>,
+      so you know which results to rely on.
     </p>
     <div class="hero-cta">
       <a href="#quickstart" class="btn btn-primary">Get started →</a>
@@ -340,27 +340,27 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
   <div class="wrap">
     <div class="center">
       <span class="eyebrow">Two halves of one system</span>
-      <h2 class="title">An agent that answers, and a framework that grades it</h2>
-      <p class="section-sub">The agent and its evaluation tools live in the same repo, so you can check the quality of what it returns instead of guessing.</p>
+      <h2 class="title">One part answers questions. The other grades the answers.</h2>
+      <p class="section-sub">Both live in the same repo, so you can measure how good the answers really are.</p>
     </div>
     <div class="split">
       <div class="product agent reveal">
         <h3><span class="tag">AGENT</span> NexusSQL</h3>
-        <p>The runtime. It handles schema-aware SQL generation, execution, narration, and charting, with tracing on every step.</p>
+        <p>The engine. It turns a question into SQL, runs it, and explains the result with a chart. Every step is traced.</p>
         <ul>
           <li>✦ <span>Pipeline &amp; agentic (ReAct) reasoning modes</span></li>
-          <li>✦ <span>Schema-aware semantic retrieval for large databases</span></li>
-          <li>✦ <span>Deterministic visualization microservice</span></li>
-          <li>✦ <span>Multi-tenant access control &amp; row-level filters</span></li>
-          <li>✦ <span>MLflow tracing + semantic &amp; result caching</span></li>
+          <li>✦ <span>Finds the right tables in large databases</span></li>
+          <li>✦ <span>A separate service that picks the chart</span></li>
+          <li>✦ <span>Per-tenant access control and row filters</span></li>
+          <li>✦ <span>MLflow tracing and query caching</span></li>
         </ul>
       </div>
       <div class="product sqlas reveal">
         <h3><span class="tag">EVAL</span> SQLAS</h3>
-        <p>The scorer. A RAGAS-style library for grading Text-to-SQL and agentic SQL agents. Install it with <span class="mono">pip install sqlas</span>.</p>
+        <p>The scorer. A small library that grades how well a SQL agent did its job. Install it with <span class="mono">pip install sqlas</span>.</p>
         <ul>
           <li>✦ <span>50+ metrics across correctness, quality &amp; safety</span></li>
-          <li>✦ <span>Failure classification, so you know <em>why</em> a query failed</span></li>
+          <li>✦ <span>Tells you <em>why</em> a query failed, not just that it did</span></li>
           <li>✦ <span>Three-dimension PASS/FAIL verdicts</span></li>
           <li>✦ <span>Spider / BIRD benchmark runners</span></li>
           <li>✦ <span>Guardrails, prompt versioning &amp; judge caching</span></li>
@@ -374,18 +374,18 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
 <section id="features">
   <div class="wrap">
     <span class="eyebrow">Features</span>
-    <h2 class="title">Built for real production use</h2>
-    <p class="section-sub">Every question is answered, cached, traced, and safety-checked before the result comes back.</p>
+    <h2 class="title">What it does in production</h2>
+    <p class="section-sub">Each question is answered, cached, and checked for safety before you see the result.</p>
     <div class="feat-grid">
-      <div class="card reveal"><div class="ico">🧠</div><h4>Multi-agent reasoning</h4><p>A fast single-pass pipeline, or a ReAct loop that plans, reads the schema, runs the query, and fixes its own mistakes.</p></div>
-      <div class="card reveal"><div class="ico">🔎</div><h4>Schema-aware retrieval</h4><p>When a database has a lot of tables, it switches to semantic retrieval so only the relevant ones go into the prompt.</p></div>
-      <div class="card reveal"><div class="ico">📊</div><h4>Auto visualization</h4><p>A separate microservice picks the chart type (bar, line, pie, scatter, or single number). It runs off the hot path, so it never slows an answer down.</p></div>
-      <div class="card reveal"><div class="ico">🛡️</div><h4>Guardrails &amp; safety</h4><p>Read-only enforcement, SQL and prompt injection detection, and PII access checks. None of it needs an LLM call.</p></div>
-      <div class="card reveal"><div class="ico">⚡</div><h4>Production caching</h4><p>A semantic and exact NL→SQL cache, plus a result cache with TTL. You can watch the hit rate and tokens saved as they happen.</p></div>
-      <div class="card reveal"><div class="ico">📡</div><h4>MLflow observability</h4><p>Every query is traced with latency, SQL complexity, cache metrics, and the thumbs-up or thumbs-down a user left.</p></div>
-      <div class="card reveal"><div class="ico">🏢</div><h4>Multi-tenant</h4><p>Per-tenant table access control and row-level filters, so each caller only sees their own data.</p></div>
-      <div class="card reveal"><div class="ico">🌊</div><h4>Streaming</h4><p>An SSE endpoint streams each stage (schema, SQL, execution, narration) to the UI as it happens.</p></div>
-      <div class="card reveal"><div class="ico">🎯</div><h4>Drift monitoring</h4><p>A drift status endpoint flags when answer quality or query patterns start to shift over time.</p></div>
+      <div class="card reveal"><div class="ico">🧠</div><h4>Multi-agent reasoning</h4><p>Run a quick single pass, or let the agent plan, check the schema, and fix its own mistakes as it goes.</p></div>
+      <div class="card reveal"><div class="ico">🔎</div><h4>Schema-aware retrieval</h4><p>Big database? It finds the tables that matter and leaves the rest out of the prompt.</p></div>
+      <div class="card reveal"><div class="ico">📊</div><h4>Auto visualization</h4><p>A separate service picks the chart, whether that's a bar, a line, or just a number. It runs on the side and never slows an answer down.</p></div>
+      <div class="card reveal"><div class="ico">🛡️</div><h4>Guardrails &amp; safety</h4><p>It blocks writes, catches SQL and prompt injection, and checks for exposed PII. No LLM call needed.</p></div>
+      <div class="card reveal"><div class="ico">⚡</div><h4>Production caching</h4><p>It caches both the questions and their results. You can see the hit rate and how many tokens it saved.</p></div>
+      <div class="card reveal"><div class="ico">📡</div><h4>MLflow observability</h4><p>Every query is logged: how long it took, how complex the SQL was, and whether the user liked the answer.</p></div>
+      <div class="card reveal"><div class="ico">🏢</div><h4>Multi-tenant</h4><p>Each tenant gets its own table access and row filters. Nobody sees data that isn't theirs.</p></div>
+      <div class="card reveal"><div class="ico">🌊</div><h4>Streaming</h4><p>Watch each step show up in the UI as it runs, over a simple SSE stream.</p></div>
+      <div class="card reveal"><div class="ico">🎯</div><h4>Drift monitoring</h4><p>An endpoint that warns you when answer quality starts to slip.</p></div>
     </div>
   </div>
 </section>
@@ -395,12 +395,12 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
   <div class="wrap">
     <span class="eyebrow">How it works</span>
     <h2 class="title">Two ways to reason</h2>
-    <p class="section-sub">Choose speed or depth per request. The agentic loop is one flag away.</p>
+    <p class="section-sub">Pick speed or depth on each request. The agentic mode is one flag away.</p>
     <div class="modes">
       <div class="mode reveal">
         <span class="pip">Default</span>
         <h4>⚡ Pipeline mode</h4>
-        <p>A single fast pass for direct questions. Low latency and fully cached, which suits dashboards and queries you run often.</p>
+        <p>One fast pass, good for clear questions. It's cached and quick, so it works well for dashboards and queries you run a lot.</p>
         <div class="flow">
           <span class="step">Schema</span><span class="arr">→</span>
           <span class="step">SQL</span><span class="arr">→</span>
@@ -412,7 +412,7 @@ footer{padding:64px 24px 48px;border-top:1px solid var(--border);margin-top:110p
       <div class="mode reveal">
         <span class="pip">force_agentic: true</span>
         <h4>🧠 Agentic (ReAct) mode</h4>
-        <p>Multi-step reasoning for vaguer or more involved questions. The agent reads the tables and corrects itself before answering.</p>
+        <p>For trickier questions. The agent works in steps, checks the tables, and corrects itself before it answers.</p>
         <div class="flow">
           <span class="step">Plan</span><span class="arr">→</span>
           <span class="step">Inspect schema</span><span class="arr">→</span>
@@ -496,7 +496,7 @@ cd frontend && npm run dev</code></pre>
   <div class="wrap">
     <span class="eyebrow">API</span>
     <h2 class="title">One endpoint, complete answers</h2>
-    <p class="section-sub"><code style="background:rgba(124,123,255,.14);padding:2px 7px;border-radius:6px">POST /query</code> returns SQL, data, a narrated response, a chart spec, and metrics. Full docs at <code style="background:rgba(124,123,255,.14);padding:2px 7px;border-radius:6px">/docs</code>.</p>
+    <p class="section-sub"><code style="background:rgba(124,123,255,.14);padding:2px 7px;border-radius:6px">POST /query</code> gives you the SQL, the data, a written answer, a chart, and timing. Full docs live at <code style="background:rgba(124,123,255,.14);padding:2px 7px;border-radius:6px">/docs</code>.</p>
 
     <div class="tabs" id="api-tabs">
       <button class="tab active" data-tab="req">Request</button>
@@ -567,7 +567,7 @@ cd frontend && npm run dev</code></pre>
   <div class="wrap">
     <span class="eyebrow">SQLAS, the evaluation framework</span>
     <h2 class="title">Score every query across 50+ metrics</h2>
-    <p class="section-sub">A RAGAS-style library for Text-to-SQL and agentic agents, aligned with Spider, BIRD, RAGAS, and MLflow. <span class="mono" style="color:#8fe9f6">pip install sqlas</span></p>
+    <p class="section-sub">A RAGAS-style library for SQL agents. It lines up with the Spider, BIRD, RAGAS, and MLflow standards. <span class="mono" style="color:#8fe9f6">pip install sqlas</span></p>
 
     <div class="tabs" id="sqlas-tabs">
       <button class="tab active" data-tab="eval">Evaluate</button>
@@ -695,7 +695,7 @@ print(generate_report(results, format="json"))       # → artifacts</code></pre
 <section style="padding-bottom:0">
   <div class="cta-band reveal">
     <h2>Ship a SQL agent you can trust.</h2>
-    <p>Everything you need to run it and check its quality is in one repo.</p>
+    <p>Run it and check its quality, all from one repo.</p>
     <div class="hero-cta">
       <a href="https://github.com/thepradip/NexusSQL" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub →</a>
       <a href="https://pypi.org/project/sqlas/" class="btn btn-ghost" target="_blank" rel="noopener">pip install sqlas</a>

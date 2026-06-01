@@ -13,7 +13,7 @@
 
 ## What it does
 
-NexusSQL converts natural language questions into SQL, executes them against any database, narrates the result, and renders a chart, all in one API call.
+Ask a question in plain language and NexusSQL handles the rest. It writes the SQL, runs it against your database, and gives you back an answer with a chart. One API call.
 
 - **Pipeline mode**: fast single-pass: schema → SQL → execute → narrate → visualize
 - **Agentic (ReAct) mode**: multi-step reasoning: plan → inspect schema → execute → self-correct → answer
