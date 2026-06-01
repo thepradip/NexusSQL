@@ -1,4 +1,4 @@
-# SQLAS — SQL Agent Scoring Framework
+# SQLAS: SQL Agent Scoring Framework
 
 **A RAGAS-equivalent evaluation library for Text-to-SQL and Agentic SQL agents.**
 
@@ -7,7 +7,7 @@
 [![Tests](https://img.shields.io/badge/tests-140%20passing-brightgreen)](https://github.com/thepradip/NexusSQL)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../LICENSE)
 
-Evaluate SQL agents across **50+ metrics** — correctness, quality, safety, agentic reasoning, schema retrieval, prompt versioning, guardrails, and cache ROI. Aligned with Spider, BIRD, RAGAS, and MLflow standards.
+Evaluate SQL agents across **50+ metrics**: correctness, quality, safety, agentic reasoning, schema retrieval, prompt versioning, guardrails, and cache ROI. Aligned with Spider, BIRD, RAGAS, and MLflow standards.
 
 **Author:** [thepradip](https://github.com/thepradip)
 
@@ -67,16 +67,16 @@ s = evaluate_safety(sql, question=question, pii_columns=["email", "ssn"])
 
 print(c.score, c.verdict)   # 0.85  PASS   (threshold 0.5)
 print(q.score, q.verdict)   # 0.72  PASS   (threshold 0.6)
-print(s.score, s.verdict)   # 0.45  FAIL   (threshold 0.9 — PII detected)
+print(s.score, s.verdict)   # 0.45  FAIL   (threshold 0.9, PII detected)
 ```
 
-`evaluate_safety()` makes **zero LLM calls** — pure regex + sqlglot AST.
+`evaluate_safety()` makes **zero LLM calls**: pure regex + sqlglot AST.
 
 ---
 
 ## Failure Classification
 
-Know exactly *why* a query failed — not just a score:
+Know exactly *why* a query failed, not just a score:
 
 ```python
 from sqlas import classify_failure, FailureCategory
@@ -88,20 +88,20 @@ analysis = classify_failure(
 )
 
 print(analysis.primary)    # FailureCategory.LIMIT_TRUNCATION
-print(analysis.top_hint()) # "Remove LIMIT — question asks for full results, not top-N"
+print(analysis.top_hint()) # "Remove LIMIT, the question asks for full results, not top-N"
 print(analysis.evidence)   # {"limit_truncation": "LIMIT in SQL, 100 rows vs 839 expected"}
 ```
 
 | Category | Cause |
 |---|---|
 | `LIMIT_TRUNCATION` | LIMIT silently cut result (100 vs 839 rows) |
-| `WRONG_TABLE` | Wrong table used — similar name, wrong data |
+| `WRONG_TABLE` | Wrong table used (similar name, wrong data) |
 | `WRONG_AGGREGATION` | MAX instead of SUM, AVG instead of SUM |
 | `SCALAR_MISMATCH` | Single value differs from gold |
 | `ROW_EXPLOSION` | 1:N join inflated row count |
 | `SCHEMA_HALLUCINATION` | Invented table/column names |
 | `FULL_TABLE_SCAN` | SELECT * with no WHERE/LIMIT |
-| `TRIM_ON_NUMERIC` | TRIM() on numeric column — invalid SQL |
+| `TRIM_ON_NUMERIC` | TRIM() on numeric column (invalid SQL) |
 | `UNSAFE_QUERY` | DDL/DML attempted |
 | `CURRENCY_NOT_CLEANED` | Single REPLACE missed commas in `$1,234` |
 | `NULL_IN_AGGREGATION` | AVG/SUM without IS NOT NULL |
@@ -249,7 +249,7 @@ log_all(results,
 
 ![SQL Agent System Architecture](../assets/architecture.png)
 
-The right panel shows how SQLAS slots into a production SQL agent — evaluating execution accuracy, schema retrieval quality, safety, failure classification, and overall verdict across every query.
+The right panel shows how SQLAS slots into a production SQL agent, evaluating execution accuracy, schema retrieval quality, safety, failure classification, and overall verdict across every query.
 
 ---
 
@@ -274,10 +274,10 @@ The right panel shows how SQLAS slots into a production SQL agent — evaluating
 | `WEIGHTS` | 15 | Standard NL→SQL pipeline |
 | `WEIGHTS_V2` | 20 | + RAGAS context quality |
 | `WEIGHTS_V3` | 30 | + Guardrails + visualization |
-| `WEIGHTS_V4` | 28 | + Agentic quality — ReAct agents |
+| `WEIGHTS_V4` | 28 | + Agentic quality (ReAct agents) |
 
 ---
 
 ## License
 
-MIT — [thepradip](https://github.com/thepradip) · [pypi.org/project/sqlas](https://pypi.org/project/sqlas/)
+MIT, by [thepradip](https://github.com/thepradip) · [pypi.org/project/sqlas](https://pypi.org/project/sqlas/)

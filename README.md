@@ -1,4 +1,4 @@
-# NexusSQL — SQL AI Agent
+# NexusSQL: SQL AI Agent
 
 **Natural language to SQL with multi-agent reasoning, schema-aware retrieval, and production observability.**
 
@@ -13,14 +13,14 @@
 
 ## What it does
 
-NexusSQL converts natural language questions into SQL, executes them against any database, narrates the result, and renders a chart — all in one API call.
+NexusSQL converts natural language questions into SQL, executes them against any database, narrates the result, and renders a chart, all in one API call.
 
-- **Pipeline mode** — fast single-pass: schema → SQL → execute → narrate → visualize
-- **Agentic (ReAct) mode** — multi-step reasoning: plan → inspect schema → execute → self-correct → answer
-- **Visualization microservice** — deterministic chart type inference isolated from the agent
-- **Multi-tenant** — per-tenant table access control and row-level filters
-- **MLflow observability** — every query traced with latency, SQL complexity, cache metrics, and user feedback
-- **Production cache** — semantic + exact NL→SQL cache; result cache with TTL
+- **Pipeline mode**: fast single-pass: schema → SQL → execute → narrate → visualize
+- **Agentic (ReAct) mode**: multi-step reasoning: plan → inspect schema → execute → self-correct → answer
+- **Visualization microservice**: deterministic chart type inference isolated from the agent
+- **Multi-tenant**: per-tenant table access control and row-level filters
+- **MLflow observability**: every query traced with latency, SQL complexity, cache metrics, and user feedback
+- **Production cache**: semantic and exact NL→SQL cache; result cache with TTL
 
 ---
 
@@ -50,7 +50,7 @@ NexusSQL converts natural language questions into SQL, executes them against any
 ```bash
 # 1. Set credentials
 cp backend/.env.example backend/.env
-# edit backend/.env — fill in AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_API_KEY, AZURE_OPENAI_DEPLOYMENT_NAME
+# edit backend/.env: fill in AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_API_KEY, AZURE_OPENAI_DEPLOYMENT_NAME
 
 # 2. Start everything
 docker compose up --build
@@ -64,7 +64,7 @@ Three containers start in dependency order:
 | `ariasql-backend` | 8000 | SQL AI agent API + MLflow |
 | `ariasql-frontend` | 80 | React UI |
 
-Open `http://localhost` — ready.
+Open `http://localhost` and you're ready.
 
 ```bash
 docker compose down          # stop
@@ -120,7 +120,7 @@ Runs multi-step ReAct loop: plan → describe tables → execute SQL → self-co
 |---|---|---|
 | `GET` | `/health` | Service health + table list |
 | `GET` | `/schema` | Full database schema |
-| `POST` | `/query/stream` | SSE streaming — stages in real time |
+| `POST` | `/query/stream` | SSE streaming, stages in real time |
 | `POST` | `/feedback` | Thumbs up/down on a trace |
 | `GET` | `/cache/stats` | Cache hit rate, tokens saved |
 | `POST` | `/export/csv` | Download results as CSV |
@@ -165,13 +165,13 @@ services/visualization_service/
 └── schemas.py      Versioned Pydantic contracts
 ```
 
-The backend calls it via `backend/visualization_client.py` with a 2-second timeout. If the service is unavailable, SQL answers still return — just without a chart.
+The backend calls it via `backend/visualization_client.py` with a 2-second timeout. If the service is unavailable, SQL answers still return, just without a chart.
 
 ---
 
 ## Evaluation
 
-NexusSQL ships with [SQLAS](https://pypi.org/project/sqlas/) — a production evaluation framework for Text-to-SQL agents.
+NexusSQL ships with [SQLAS](https://pypi.org/project/sqlas/), a production evaluation framework for Text-to-SQL agents.
 
 ```bash
 pip install sqlas
@@ -184,7 +184,7 @@ See [`sqlas/README.md`](sqlas/README.md) for full documentation.
 ## Project layout
 
 ```
-backend/                    FastAPI agent — SQL generation, execution, caching, tracing
+backend/                    FastAPI agent: SQL generation, execution, caching, tracing
 frontend/                   React + Vite + Tailwind UI
 services/
   visualization_service/    Chart inference microservice
@@ -198,4 +198,4 @@ start.sh                    Local dev startup script
 
 ## License
 
-MIT — [thepradip](https://github.com/thepradip)
+MIT, by [thepradip](https://github.com/thepradip)
